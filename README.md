@@ -1,2 +1,4 @@
 # epm-policy-exemptions
-Reference GitOps workflow for managing Cloudsmith EPM policy exemptions.
+
+This repository demonstrates a GitOps-style exemption workflow for
+Cloudsmith Enterprise Policy Manager (EPM).
