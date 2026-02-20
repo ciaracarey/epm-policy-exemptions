@@ -1,0 +1,30 @@
+name: Apply EPM Exemptions
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "exemptions/allow.json"
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Apply exemptions
+        env:
+          CLOUDSMITH_WORKSPACE: ${{ secrets.CLOUDSMITH_WORKSPACE }}
+          ALLOW_POLICY_SLUG: ${{ secrets.ALLOW_POLICY_SLUG }}
+          CLOUDSMITH_TOKEN: ${{ secrets.CLOUDSMITH_TOKEN }}
+        run: python exemptions/update_policy.py
