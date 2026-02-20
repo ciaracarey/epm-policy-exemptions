@@ -2,10 +2,17 @@ name: Apply EPM Exemptions
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
       - "exemptions/allow.json"
+
+permissions:
+  contents: read
+  id-token: write   # REQUIRED FOR OIDC
+
+env:
+  CLOUDSMITH_WORKSPACE: globex-innovations
+  SERVICE: gha-epm-actions   # ← your real service account
 
 jobs:
   apply:
@@ -14,17 +21,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
+      # OIDC LOGIN
+      - name: Cloudsmith OIDC login
+        uses: cloudsmith-io/cloudsmith-cli-action@v1.0.2
+        with:
+          oidc-namespace: ${{ env.CLOUDSMITH_WORKSPACE }}
+          oidc-service-slug: ${{ env.SERVICE }}
+          oidc-auth-only: "true"
 
       - name: Install dependencies
         run: pip install requests
 
       - name: Apply exemptions
         env:
-          CLOUDSMITH_WORKSPACE: ${{ secrets.CLOUDSMITH_WORKSPACE }}
+          CLOUDSMITH_WORKSPACE: ${{ env.CLOUDSMITH_WORKSPACE }}
           ALLOW_POLICY_SLUG: ${{ secrets.ALLOW_POLICY_SLUG }}
-          CLOUDSMITH_TOKEN: ${{ secrets.CLOUDSMITH_TOKEN }}
+          CLOUDSMITH_TOKEN: ${{ env.CLOUDSMITH_API_KEY }}
         run: python exemptions/update_policy.py
