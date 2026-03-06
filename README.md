@@ -55,11 +55,11 @@ Each exemption produces:
 
 Configure the following repository secrets:
 
-  Secret                   Description
-  ------------------------ ----------------
-  `CLOUDSMITH_WORKSPACE`   Workspace slug
-  `ALLOW_POLICY_SLUG`      Policy slug
-  `CLOUDSMITH_TOKEN`       API token
+| Secret | Description |
+|--------|-------------|
+| `CLOUDSMITH_WORKSPACE` | Workspace slug |
+| `ALLOW_POLICY_SLUG` | Policy slug |
+| `CLOUDSMITH_TOKEN` | API token |
 
 ------------------------------------------------------------------------
 
