@@ -61,12 +61,15 @@ Configure the following repository secrets:
 ---
 
 ## Local Testing
+### 1. Set environment variables
+```bash
 export CLOUDSMITH_WORKSPACE=example
 export ALLOW_POLICY_SLUG=abc123
 export CLOUDSMITH_TOKEN=token
 
+### 1. Set environment variables
+```bash
 python exemptions/update_policy.py
-
 ---
 
 ## Notes
