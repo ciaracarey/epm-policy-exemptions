@@ -4,4 +4,5 @@
   "npm:left-pad:1.3.0",
   "maven:commons-io:2.13.0",
   "python:redis:7.3.0", 
-  "python:spotipy:2.25.0"]
+  "python:spotipy:2.25.0", 
+  "maven:jackson-core:2.19.1"]
