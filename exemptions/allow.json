@@ -5,4 +5,5 @@
   "maven:commons-io:2.13.0",
   "python:redis:7.3.0", 
   "python:spotipy:2.25.0", 
-  "maven:jackson-core:2.19.1"]
+  "maven:jackson-core:2.19.1",
+  "maven:commons-io:2.11.0"]
