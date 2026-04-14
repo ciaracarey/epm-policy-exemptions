@@ -3,4 +3,5 @@
   "python:redis:7.3.0",
   "maven:commons-io:2.11.0",  
   "maven:aircompressor:0.27", 
-  "python:spotipy:2.25.0"]
+  "python:spotipy:2.25.0", 
+  "python:redis:7.4.0"]
