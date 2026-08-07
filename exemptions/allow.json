@@ -6,4 +6,4 @@
   "python:redis:7.4.0", 
   "python:idna:3.12",
   "python:certifi:2026.4.22",
-  "python:spotipy:2.25.0"]
+  "python:spotipy:2.25.0"] 
